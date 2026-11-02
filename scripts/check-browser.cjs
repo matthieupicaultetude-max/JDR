@@ -19,6 +19,12 @@ const assert = require('node:assert/strict');
         await page.setContent(`<iframe sandbox="allow-scripts allow-same-origin" src="${url}" style="width:1200px;height:1200px"></iframe>`);
       }
       const ui = embedded ? page.frameLocator('iframe') : page;
+      await ui.locator('.lived-scene').waitFor();
+      assert.match(await ui.locator('.objective').innerText(), /Quitter Nacre/);
+      assert.match(await ui.locator('.role-bio').innerText(), /entrailles de Nacre/);
+      await ui.locator('#action').selectOption('effort');
+      assert.match(await ui.locator('#action-context').innerText(), /irradiée/);
+      await ui.locator('#action').selectOption('rest');
       const state = async () => {
         const frame = embedded ? page.frames()[1] : page;
         return frame.evaluate(() => JSON.parse(localStorage.getItem('signal-prototype-v1')));
@@ -46,6 +52,13 @@ const assert = require('node:assert/strict');
       await ui.locator('#decision').waitFor();
       assert.deepEqual((await state()).players[0].choice.alloc, [1, 0]);
       assert.equal((await state()).messages.length, 2);
+      await ui.locator('#control').click();
+      page.on('dialog', dialog => dialog.accept());
+      if (embedded) await page.frames()[1].evaluate(() => { window.confirm = () => true; });
+      await ui.locator('#resolve').click();
+      await ui.locator('[data-player="0"]').click();
+      assert.match(await ui.locator('.lived-scene').innerText(), /qu’une nouvelle cartouche/);
+      assert.match(await ui.locator('.personal-outcome').innerText(), /Vous êtes encore en vie/);
       assert.deepEqual(errors, []);
       console.log(`PASS: decisions, validation, public/private messages, persistence (${embedded ? 'sandboxed preview' : 'normal page'})`);
       await context.close();

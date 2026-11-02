@@ -2,6 +2,12 @@
 
 Simulation locale pour cinq personnes sur trois jours, sans dépendance à installer.
 
+## Scénario : les dernières heures de Nacre
+
+Une explosion isole cinq membres d’équipage dans une station qui entrera dans l’atmosphère dans trois jours. Le remorqueur Orphée est leur seul espoir. Le premier jour, ils doivent arbitrer entre l’étanchéité de la coque et la réparation du réacteur. Le deuxième, entre les abris et une balise de détresse. Le troisième, entre un passage sûr et le guidage de la navette.
+
+Chaque point de vue propose une scène quotidienne, un rôle, un objectif personnel explicite, un secret et un journal des conséquences. Les cartouches d’alimentation sont des batteries : elles alimentent les circuits collectifs, sont conservées si le circuit ne démarre pas et consommées si celui-ci réussit. Les mécaniques du prototype restent identiques. Les anciennes sauvegardes restent compatibles ; leurs anciens bilans n’ont simplement pas de journal personnel détaillé.
+
 ## Lancer
 
 Depuis `/workspace/JDR`, exécuter `npm start` (Python 3 requis), puis ouvrir le port 3000 dans l’outil d’aperçu de votre environnement. On peut aussi ouvrir `index.html` via tout serveur HTTP statique. Les modules JavaScript nécessitent HTTP.
