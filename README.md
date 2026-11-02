@@ -1,5 +1,13 @@
 # SIGNAL — prototype narratif
 
+## Nouveau laboratoire : liberté encadrée
+
+Ouvrir `freedom.html` pour jouer « Quelqu’un a fermé les portes », une journée indépendante à cinq points de vue. Les décisions remplacent le budget de batteries : partage d’informations, protection, médecine, spores et contact extérieur. La première décision est définitive et transmet les révélations immédiatement. La seconde reste modifiable jusqu’à la résolution.
+
+Chaque personnage peut proposer un seul plan alternatif : méthode libre, effet choisi parmi protection, soin, récupération du journal ou contact extérieur. Le texte n’est pas interprété par une IA. Un partenaire doit engager sa seconde action ; l’auteur utilise aussi sa seconde action et perd 1 santé seulement si le plan aboutit. Une personne ne peut soutenir qu’un seul plan. Les engagements se résolvent ensemble, puis les coûts, soins et effets de purge sont appliqués. Aucun accord ne bloque la journée : un plan incomplet est annulé sans coût.
+
+Une réponse d’auteur facultative est conservée comme souvenir dans le dossier et l’épilogue, sans bonus mécanique. Le bilan conserve les conséquences et ouvre des pistes pour un deuxième jour qui n’est pas encore implémenté dans ce mode. Les sauvegardes de l’ancien prototype restent séparées. Le bouton d’observation révèle les choix pour le test ; il n’existe pas de confidentialité technique entre personnes utilisant ce navigateur.
+
 Simulation locale pour cinq personnes sur trois jours, sans dépendance à installer.
 
 ## Scénario : les dernières heures de Nacre
@@ -31,6 +39,7 @@ Le test navigateur optionnel `scripts/check-browser.cjs` vérifie aussi les envo
 ```sh
 npm install --prefix /tmp/signal-browser --no-package-lock --no-audit --no-fund playwright
 NODE_PATH=/tmp/signal-browser/node_modules node scripts/check-browser.cjs
+NODE_PATH=/tmp/signal-browser/node_modules node scripts/check-freedom.cjs
 ```
 
 ## Limites
